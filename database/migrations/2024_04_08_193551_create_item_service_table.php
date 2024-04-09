@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('item_service', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('selected_service_id');
-            $table->unsignedInteger('service_id');
+            $table->unsignedBigInteger('service_id');
             $table->timestamps();
 
             $table->foreign("selected_service_id")->references("id")->on("selected_service");

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->double('value',2);
+            $table->boolean("status");
             $table->timestamps();
         });
     }
