@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class SelectedService extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'total_value',
+        'worker_id',
+        'user_id'
+    ];
 }

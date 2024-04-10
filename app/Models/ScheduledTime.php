@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class ScheduledTime extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'disponibility',
+        'date_time_id'
+    ];
+
 }

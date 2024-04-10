@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class ServiceTable extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'total_value',
+        'workerd_id',
+        'user_id'
+    ];
 }
