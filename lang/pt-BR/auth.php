@@ -9,11 +9,11 @@ return [
     |
     | The following language lines are used during authentication for various
     | messages that we need to display to the user. You are free to modify
-    | these language lines according to your application's requirements.
+    | these language lines according to yours application's requirements.
     |
     */
 
-    'failed' => 'Essas credenciais não foram encontradas em nossos registros.',
+    'failed' => 'Usuariao e/ou senha não encontrados.',
     'password' => 'A senha informada está incorreta.',
     'throttle' => 'Muitas tentativas de login. Tente novamente em :seconds segundos.',
 

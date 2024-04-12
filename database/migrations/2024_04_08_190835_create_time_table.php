@@ -13,10 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('date_time', function (Blueprint $table) {
+        Schema::create('hours', function (Blueprint $table) {
             $table->id();
             $table->time("hour");
-            $table->date('date');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('date_time');
+        Schema::dropIfExists('hour');
     }
 };

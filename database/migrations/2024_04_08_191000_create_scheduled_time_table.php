@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->boolean("disponibility");
-            $table->bigInteger("date_time_id")->unsigned();
+            $table->bigInteger("hour_id")->unsigned();
 
-            $table->foreign("date_time_id")->references("id")->on("date_time");
+            $table->foreign("hour_id")->references("id")->on("hours");
 
         });
     }

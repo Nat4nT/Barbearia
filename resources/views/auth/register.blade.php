@@ -17,9 +17,10 @@
         </div>
 
         {{-- Phone --}}
-        <div class="mt-4">
+        <div class="mt-4" x-data>
             <x-input-label for="phone" :value="__('Phone Number')" />
-            <x-text-input id="phone" class="block mt-1 w-full" type="phone" name="phone" :value="old('phone')" required autocomplete="username" />
+            <x-text-input id="phone" class="block mt-1 w-full" type="text" name="phone" :value="old('phone')" required autocomplete="phone"
+                x-mask="(99) 99999-9999"/>
             <x-input-error :messages="$errors->get('phone')" class="mt-2" />
         </div>
 
