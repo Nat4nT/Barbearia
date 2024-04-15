@@ -11,7 +11,8 @@ class ScheduledTime extends Model
 
     protected $fillable = [
         'disponibility',
-        'date_time_id'
+        'data',
+        'hour_id'
     ];
 
 }

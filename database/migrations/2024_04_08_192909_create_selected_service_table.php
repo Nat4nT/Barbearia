@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('selected_service', function (Blueprint $table) {
             $table->id();
             $table->double("total_value");
+            $table->date('data');
+
             $table->foreignId("worker_id")->constrained('users')->cascadeOnDelete();
             $table->foreignId('user_id')->constrained("users")->cascadeOnDelete();
             $table->timestamps();

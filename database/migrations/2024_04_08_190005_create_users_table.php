@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -27,6 +28,14 @@ return new class extends Migration
 
             $table->foreign("type_id")->references("id")->on("type");
         });
+
+        DB::table('users')->insert([
+            ['type_id' => 4, 'token'=>  rand(100000000,999999999), 'name'=>'Admin',
+            'phone'=>'(45) 99848-2187','password'=>'12345678' , "email"=>'admin@gmail.com']
+            ,['type_id' => 1, 'token'=>  rand(100000000,999999999), 'name'=>'Usuario',
+            'phone'=>'(45) 93524-3741','password'=>'12345678' , "email"=>'teste@gmail.com']
+
+        ]);
     }
 
     /**

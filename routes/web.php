@@ -3,7 +3,6 @@
 use App\Http\Controllers\HourController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,12 +31,15 @@ Route::middleware('auth')->group(function () {
         Route::delete('/me', [ProfileController::class, 'destroy'])->name('destroy');
     });
 
+
+    // apenas boss
     Route::prefix('/hour')->name('hour.')->group(function(){
         Route::post('/store',[HourController::class,'store'])->name('create');
     });
 
     // ROTAS PARA SERVIÇOS
-    Route::prefix('service')->name('service.')->group(function (){
+    // apenas boss e admin
+    Route::prefix('service')->middleware(["admin"])->name('service.')->group(function (){
         // ------ VERBOS GET ------
         Route::get('/',[ ServiceController::class, 'index'])->name('index');
         Route::get('/new',[ServiceController::class, 'create'])->name('create');
