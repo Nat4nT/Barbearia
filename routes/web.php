@@ -33,13 +33,13 @@ Route::middleware('auth')->group(function () {
 
 
     // apenas boss
-    Route::prefix('/hour')->name('hour.')->group(function(){
+    Route::middleware(['admin','boss'])->prefix('/hour')->name('hour.')->group(function(){
         Route::post('/store',[HourController::class,'store'])->name('create');
     });
 
     // ROTAS PARA SERVIÇOS
     // apenas boss e admin
-    Route::prefix('service')->middleware(["admin"])->name('service.')->group(function (){
+    Route::prefix('service')->middleware(["admin", 'boss'])->name('service.')->group(function (){
         // ------ VERBOS GET ------
         Route::get('/',[ ServiceController::class, 'index'])->name('index');
         Route::get('/new',[ServiceController::class, 'create'])->name('create');

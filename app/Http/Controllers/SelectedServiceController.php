@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SelectedService;
 use Illuminate\Http\Request;
 
 class SelectedServiceController extends Controller
@@ -13,7 +14,8 @@ class SelectedServiceController extends Controller
      */
     public function index()
     {
-        //
+       $selectedService = SelectedService::all();
+       return view("dashboard",["selected" => $selectedService]);
     }
 
     /**
@@ -32,9 +34,14 @@ class SelectedServiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($tvalue, $wid ,$uid)
     {
-        //
+        $data = [
+            'total_value' => $tvalue,
+            'worker_id' => $wid,
+            'user_id' => $uid
+         ];
+        SelectedService::create($data);
     }
 
     /**

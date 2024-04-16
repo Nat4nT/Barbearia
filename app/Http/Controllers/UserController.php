@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
+    public function __construct() {
+        $this->middleware(['boss','barber','admin'])->only(["myServices"]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -90,5 +94,11 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function myServices(Auth $auth)
+    {
+        $myServices = DB::table('selected_service')->where("worker_id", Auth::user()->id);
+        // return
     }
 }
