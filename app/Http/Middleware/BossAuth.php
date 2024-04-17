@@ -2,9 +2,9 @@
 
 namespace App\Http\Middleware;
 
+use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -19,10 +19,12 @@ class BossAuth
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user()->type_id == 3){
+        if((Auth::user()->type_id == 3) || (Auth::user()->type_id == 4)){
             return $next($request);
+        }else{
+            return route('dashboard');
         }
-        return route("dashboard");
+
 
     }
 }

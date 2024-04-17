@@ -14,13 +14,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('type', function (Blueprint $table) {
+        Schema::create('types', function (Blueprint $table) {
             $table->id();
             $table->string("type_name");
             $table->timestamps();
         });
 
-        DB::table('type')->insert([
+        DB::table('types')->insert([
             ['id'=>1, 'type_name'=>'comum_user'],
             ['id'=>2, 'type_name'=>'barber_user'],
             ['id'=>3, 'type_name'=>'boss_user'],
@@ -37,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('type');
+        Schema::dropIfExists('types');
     }
 };

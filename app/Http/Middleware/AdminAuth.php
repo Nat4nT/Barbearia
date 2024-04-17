@@ -19,11 +19,12 @@ class AdminAuth
      */
     public function handle(Request $request, Closure $next)
     {
-         if(Auth::user()->type_id == 4){
-             return $next($request);
-            }
+        if(Auth::user()->type_id == 4){
+            return $next($request);
+        }else{
+            return redirect()->route("dashboard");
+        }
 
-            return route('dashboard');
-        // return response()->redirect("dashboard");
+            // return route('dashboard');
     }
 }

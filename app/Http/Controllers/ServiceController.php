@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Hour;
+use App\Models\ScheduledTime;
 use App\Models\Service;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
@@ -14,8 +17,12 @@ class ServiceController extends Controller
      */
     public function index()
     {
+
+        $user = User::all();
         $services = Service::all();
-        return view("service.index", ['services' => $services]);
+        $hours = Hour::all();
+        $scheduled =  ScheduledTime::all();
+        return view("service.index", ['users' =>$user ,'services' => $services , 'hours' => $hours, "time" => $scheduled]);
     }
 
     /**

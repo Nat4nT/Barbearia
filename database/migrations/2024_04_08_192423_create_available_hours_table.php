@@ -19,8 +19,8 @@ return new class extends Migration
             $table->bigInteger('scheduled_time_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign("user_id")->references("id")->on("users");
-            $table->foreign("scheduled_time_id")->references("id")->on("scheduled_time");
+            $table->foreign("user_id")->references("id")->on("user");
+            $table->foreign("scheduled_time_id")->references("id")->on("scheduled_times");
 
         });
     }

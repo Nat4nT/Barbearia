@@ -6,12 +6,18 @@
         </h2>
     </x-slot>
 
+    {{$time}}
+    @foreach ($users as $user )
+
+    {{$user->type->type_name}}
+    @endforeach
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div id="popUp">
+            <div id="popUp" class="hidden">
                 <div  class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-2">
                     <div  class="p-6 text-gray-900" >
-                        s
+                        @include('layouts.serviceCreate')
                     </div>
                 </div>
 
@@ -51,13 +57,13 @@
    async function off(){
         var popUp = document.getElementById('popUp');
         popUp.setAttribute('class','hidden')
-        console.log(popUp);
+        // console.log(popUp);
     }
 
     async function on(){
         var popUp = document.getElementById('popUp');
         popUp.setAttribute('class', '')
-        console.log(popUp);
+        // console.log(popUp);
     }
 
 

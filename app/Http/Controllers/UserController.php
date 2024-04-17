@@ -9,9 +9,9 @@ use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-    public function __construct() {
-        $this->middleware(['boss','barber','admin'])->only(["myServices"]);
-    }
+    // public function __construct() {
+    //     $this->middleware(['boss','barber','admin'])->only(["myServices"]);
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +19,7 @@ class UserController extends Controller
      */
     public function index(Auth $auth)
     {
-        return view('welcome');
+        return User::all();
     }
 
     /**
@@ -40,15 +40,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $data = [
-            'name' => $request->name,
-            'type_id' =>1,
-            'phone' => $request->phone,
-            'password' => $request->password,
-            'email' => $request->email
-        ];
-        User::create($data);
-        return redirect()->route('user.history');
+        // $data = [
+        //     'name' => $request->name,
+        //     'type_id' =>1,
+        //     'phone' => $request->phone,
+        //     'password' => $request->password,
+        //     'email' => $request->email
+        // ];
+        // User::create($data);
+        // return redirect()->route('user.history');
     }
 
     /**
@@ -98,7 +98,9 @@ class UserController extends Controller
 
     public function myServices(Auth $auth)
     {
-        $myServices = DB::table('selected_service')->where("worker_id", Auth::user()->id);
-        // return
+        $myServices = DB::table('selected_service')->where([
+            ["worker_id", Auth::user()->id],
+            ['data', date('Y-m-d')]
+        ]);
     }
 }

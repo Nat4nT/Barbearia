@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\HourController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ScheduledTimeController;
 use App\Http\Controllers\ServiceController;
+use App\Models\AvailableHours;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,28 +34,38 @@ Route::middleware('auth')->group(function () {
     });
 
 
+    Route::middleware('barber')->prefix('meus-horarios')->name('myTime.')->group(function(){
+        Route::get('/',[AvailableHours::class,'index'])->name('index');
+    });
+
+
+
     // apenas boss
-    Route::middleware(['admin','boss'])->prefix('/hour')->name('hour.')->group(function(){
-        Route::post('/store',[HourController::class,'store'])->name('create');
+    Route::middleware('boss')->group(function(){
+        Route::prefix('hour')->name('hour.')->group(function(){
+            Route::post('/store',[HourController::class,'store'])->name('create');
+            Route::delete('/delete/{hour}',[HourController::class,'delete'])->name("delete");
+        });
+
+        // ROTAS PARA SERVIÇOS
+        // apenas boss e admin
+        Route::prefix('service')->name('service.')->group(function (){
+            // ------ VERBOS GET ------
+            Route::get('/',[ ServiceController::class, 'index'])->name('index');
+            Route::get('/new',[ServiceController::class, 'create'])->name('create');
+            Route::get('/{service}' , [ServiceController::class, 'show'])->name('show');
+
+            // ------ VERBOS POST ------
+            Route::post('/store',[ServiceController::class, 'store'])->name('store');
+
+            // ------ VERBOS PUT ------
+            Route::put('/update/{service}', [ServiceController::class, 'edit'])->name('edit');
+
+            // ------ VERBOS DELETE ------
+            Route::delete('/delete/{service}', [ServiceController::class, 'destoy'])->name("delete");
+        });
     });
 
-    // ROTAS PARA SERVIÇOS
-    // apenas boss e admin
-    Route::prefix('service')->middleware(["admin", 'boss'])->name('service.')->group(function (){
-        // ------ VERBOS GET ------
-        Route::get('/',[ ServiceController::class, 'index'])->name('index');
-        Route::get('/new',[ServiceController::class, 'create'])->name('create');
-        Route::get('/{service}' , [ServiceController::class, 'show'])->name('show');
-
-        // ------ VERBOS POST ------
-        Route::post('/store',[ServiceController::class, 'store'])->name('store');
-
-        // ------ VERBOS PUT ------
-        Route::put('/update/{service}', [ServiceController::class, 'edit'])->name('edit');
-
-        // ------ VERBOS DELETE ------
-        Route::delete('/delete/{service}', [ServiceController::class, 'destoy'])->name("delete");
-    });
 
 });
 

@@ -14,7 +14,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('user', function (Blueprint $table) {
             $table->id();
             $table->integer('token');
             $table->unsignedBigInteger("type_id");
@@ -26,14 +26,14 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
 
-            $table->foreign("type_id")->references("id")->on("type");
+            $table->foreign("type_id")->references("id")->on("types");
         });
 
-        DB::table('users')->insert([
+        DB::table('user')->insert([
             ['type_id' => 4, 'token'=>  rand(100000000,999999999), 'name'=>'Admin',
             'phone'=>'(45) 99848-2187','password'=>'12345678' , "email"=>'admin@gmail.com']
             ,['type_id' => 1, 'token'=>  rand(100000000,999999999), 'name'=>'Usuario',
-            'phone'=>'(45) 93524-3741','password'=>'12345678' , "email"=>'teste@gmail.com']
+            'phone'=>'(45) 99999-9999','password'=>'12345678' , "email"=>'teste@gmail.com']
 
         ]);
     }
@@ -45,6 +45,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('user');
     }
 };

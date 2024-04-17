@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AvailableHours;
+use App\Models\Hour;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AvailableHourController extends Controller
 {
@@ -13,7 +16,8 @@ class AvailableHourController extends Controller
      */
     public function index()
     {
-        //
+      $availables = AvailableHours::find(Auth::user()->id);
+      return route('myTime.index', [ 'availables' => $availables]);
     }
 
     /**
@@ -34,7 +38,10 @@ class AvailableHourController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        foreach(){
+
+        };
     }
 
     /**

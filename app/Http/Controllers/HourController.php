@@ -14,8 +14,7 @@ class HourController extends Controller
      */
     public function index()
     {
-        $hours = Hour::all();
-        return view('service.index',["hours" => $hours]);
+
     }
 
     /**
@@ -39,7 +38,7 @@ class HourController extends Controller
         // dd($request->hour);
         $time = ["hour"=>$request->hour];
         Hour::create($time);
-        return view('service.create');
+        return route('service.index');
     }
 
     /**

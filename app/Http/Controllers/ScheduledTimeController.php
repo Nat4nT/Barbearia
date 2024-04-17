@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Hour;
 use App\Models\ScheduledTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ScheduledTimeController extends Controller
 {
@@ -15,7 +16,7 @@ class ScheduledTimeController extends Controller
      */
     public function index()
     {
-        $time = Hour::all();
+        // $time =
     }
 
     /**
@@ -37,13 +38,14 @@ class ScheduledTimeController extends Controller
     public function store(Request $request)
     {
         $data = [
+            'user_id' => Auth::user()->id,
             'disponibillity' => 1,
             'data' => NULL,
             'hour_id' => $request->hour_id
         ];
 
         ScheduledTime::create($data);
-        return route('services.index');
+        // return route('services.index');
     }
 
     /**
@@ -54,7 +56,7 @@ class ScheduledTimeController extends Controller
      */
     public function show(ScheduledTime $scheduledTime)
     {
-        return view("scheduled.edit",['scheduledTime' => $scheduledTime]);
+        // return view("scheduled.edit",['scheduledTime' => $scheduledTime]);
     }
 
     /**

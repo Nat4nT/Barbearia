@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('scheduled_time', function (Blueprint $table) {
+        Schema::create('scheduled_times', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->date('data')->nullable();
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('scheduled_time');
+        Schema::dropIfExists('scheduled_times');
     }
 };

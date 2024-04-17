@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('selected_service', function (Blueprint $table) {
+        Schema::create('selected_services', function (Blueprint $table) {
             $table->id();
             $table->double("total_value");
             $table->date('data');
 
-            $table->foreignId("worker_id")->constrained('users')->cascadeOnDelete();
-            $table->foreignId('user_id')->constrained("users")->cascadeOnDelete();
+            $table->foreignId("worker_id")->constrained('user')->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained("user")->cascadeOnDelete();
             $table->timestamps();
 
         });
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('selected_service');
+        Schema::dropIfExists('selected_services');
     }
 };
