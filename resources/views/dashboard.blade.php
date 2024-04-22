@@ -12,7 +12,7 @@
                 <div class="p-6 text-gray-900">
                     {{ __("You're logged in!") }}
                     {{ Auth::user()}} <br><br>
-                    {{ date("H:i")}} <br><br>
+                    {{ date(" Y-m-d H:i")}} <br><br>
 
                     @can('UserAccess')
                         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis explicabo cupiditate doloribus, error officia numquam alias repudiandae itaque, unde sit porro expedita mollitia nesciunt voluptate ipsam? Commodi dicta iure sunt.</p>

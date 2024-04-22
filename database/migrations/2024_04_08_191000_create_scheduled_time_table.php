@@ -16,9 +16,6 @@ return new class extends Migration
         Schema::create('scheduled_times', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->date('data')->nullable();
-            $table->boolean("disponibility");
-
             $table->bigInteger("hour_id")->unsigned();
 
             $table->foreign("hour_id")->references("id")->on("hours");

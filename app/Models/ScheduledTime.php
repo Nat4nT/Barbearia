@@ -11,9 +11,9 @@ class ScheduledTime extends Model
     use HasFactory;
 
     protected $fillable = [
-        'disponibility',
-        'user_id',
-        'data',
+        // 'disponibility',
+        // 'user_id',
+        // 'data',
         'hour_id'
     ];
 

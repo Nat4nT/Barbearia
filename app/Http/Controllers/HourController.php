@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Hour;
 use Illuminate\Http\Request;
+use App\Http\Controllers\ScheduledTimeController;
 
 class HourController extends Controller
 {
@@ -37,8 +38,11 @@ class HourController extends Controller
     {
         // dd($request->hour);
         $time = ["hour"=>$request->hour];
-        Hour::create($time);
-        return route('service.index');
+        $hour = Hour::create($time);
+        ScheduledTimeController::store($hour->id);
+
+
+        return redirect()->route('service.index');
     }
 
     /**

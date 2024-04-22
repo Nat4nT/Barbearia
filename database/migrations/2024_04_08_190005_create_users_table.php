@@ -31,9 +31,13 @@ return new class extends Migration
 
         DB::table('user')->insert([
             ['type_id' => 4, 'token'=>  rand(100000000,999999999), 'name'=>'Admin',
-            'phone'=>'(45) 99848-2187','password'=>'12345678' , "email"=>'admin@gmail.com']
+            'phone'=>'(45) 99848-2187','password'=>'$2y$10$221bqrtxwCQ8XS/dRPtqGOdE3SbbvKw41HQHaLV7ckDFtfOdld3Iq' , "email"=>'admin@gmail.com']
             ,['type_id' => 1, 'token'=>  rand(100000000,999999999), 'name'=>'Usuario',
-            'phone'=>'(45) 99999-9999','password'=>'12345678' , "email"=>'teste@gmail.com']
+            'phone'=>'(45) 99999-9999','password'=>'$2y$10$221bqrtxwCQ8XS/dRPtqGOdE3SbbvKw41HQHaLV7ckDFtfOdld3Iq' , "email"=>'teste@gmail.com']
+            ,['type_id' => 2, 'token'=>  rand(100000000,999999999), 'name'=>'Barbeiro',
+            'phone'=>'(45) 00000-0000','password'=>'$2y$10$221bqrtxwCQ8XS/dRPtqGOdE3SbbvKw41HQHaLV7ckDFtfOdld3Iq' , "email"=>'test3e@gmail.com']
+            ,['type_id' => 3, 'token'=>  rand(100000000,999999999), 'name'=>'Boss',
+            'phone'=>'(45) 11111-1111','password'=>'$2y$10$221bqrtxwCQ8XS/dRPtqGOdE3SbbvKw41HQHaLV7ckDFtfOdld3Iq' , "email"=>'te3ste@gmail.com']
 
         ]);
     }

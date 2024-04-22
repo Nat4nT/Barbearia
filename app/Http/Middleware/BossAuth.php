@@ -19,7 +19,9 @@ class BossAuth
      */
     public function handle(Request $request, Closure $next)
     {
-        if((Auth::user()->type_id == 3) || (Auth::user()->type_id == 4)){
+        $auth =Auth::user()->type_id;
+
+        if(($auth== 3) || ($auth == 4)){
             return $next($request);
         }else{
             return route('dashboard');

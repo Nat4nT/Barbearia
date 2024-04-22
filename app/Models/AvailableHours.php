@@ -12,7 +12,10 @@ class AvailableHours extends Model
 
     protected $fillable = [
         "user_id",
-        "scheduled_time_id"
+        "scheduled_time_id",
+        "data",
+        "disponibility",
+        "hidden"
     ];
 
     /**

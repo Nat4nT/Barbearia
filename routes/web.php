@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AvailableHourController;
 use App\Http\Controllers\HourController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ScheduledTimeController;
@@ -34,14 +35,17 @@ Route::middleware('auth')->group(function () {
     });
 
 
-    Route::middleware('barber')->prefix('meus-horarios')->name('myTime.')->group(function(){
-        Route::get('/',[AvailableHours::class,'index'])->name('index');
+    Route::middleware('barber')->group(function(){
+        Route::prefix('my')->name('my.')->group(function(){
+            Route::get('/',[AvailableHourController::class,'index'])->name('index');
+            Route::get('/new',[AvailableHourController::class,'create'])->name('create');
+        });
     });
 
 
 
     // apenas boss
-    Route::middleware('boss')->group(function(){
+    Route::middleware(['boss'])->group(function(){
         Route::prefix('hour')->name('hour.')->group(function(){
             Route::post('/store',[HourController::class,'store'])->name('create');
             Route::delete('/delete/{hour}',[HourController::class,'delete'])->name("delete");

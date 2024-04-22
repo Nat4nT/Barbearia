@@ -29,19 +29,20 @@ class ScheduledTimeController extends Controller
         //
     }
 
+
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+     public static function store($hora)
     {
         $data = [
-            'user_id' => Auth::user()->id,
-            'disponibillity' => 1,
-            'data' => NULL,
-            'hour_id' => $request->hour_id
+            // 'user_id' => Auth::user()->id,
+            // 'disponibillity' => 1,
+            // 'data' => NULL,
+            'hour_id' => $hora
         ];
 
         ScheduledTime::create($data);

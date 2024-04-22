@@ -17,6 +17,10 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('scheduled_time_id')->unsigned();
+            $table->date('data')->nullable();
+            $table->boolean("disponibility");
+            $table->boolean("hidden");
+
             $table->timestamps();
 
             $table->foreign("user_id")->references("id")->on("user");
